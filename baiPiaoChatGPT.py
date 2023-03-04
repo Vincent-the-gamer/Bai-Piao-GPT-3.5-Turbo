@@ -45,7 +45,6 @@ def cal_total_tokenLength(msg_arr: [dict]):
 
 '''
 编写请求函数
-传参：http://host:2333/你要问的问题
 '''
 @app.route("/", methods=["POST"])
 def bai_piao_chatGPT():
