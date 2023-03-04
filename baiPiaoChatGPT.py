@@ -119,7 +119,6 @@ def clear_context():
 @app.route("/showContextCount", methods=["GET"])
 def show_context_count():
     global messages
-    messages = []
     return "当前上下文条数：" + str(len(messages))
 
 
