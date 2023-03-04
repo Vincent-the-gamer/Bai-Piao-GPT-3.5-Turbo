@@ -86,32 +86,22 @@ def bai_piao_chatGPT():
     }
 
     # 发起请求
-    try:
-        session = requests.Session()
+    session = requests.Session()
 
-        response = session.post(
-            url,
-            headers=headers,
-            json=json
-        )
+    response = session.post(
+        url,
+        headers=headers,
+        json=json
+    )
 
-        """
-        请求成功，则把最新的message推入数组
-        """
-        res_message_obj = response.json()["choices"][0]["message"]
-        """
-        转义特殊字符
-        """
-        res_message_obj["content"] = res_message_obj["content"]
+    """
+    请求成功，则把最新的message推入数组
+    """
+    res_message_obj = response.json()["choices"][0]["message"]
 
-        messages.append(res_message_obj)
+    messages.append(res_message_obj)
 
-        return res_message_obj["content"]
-
-    except Exception as error:
-        """ 发生错误，则清空上下文 """
-        messages = []
-        raise error
+    return res_message_obj["content"]
 
 
 """
