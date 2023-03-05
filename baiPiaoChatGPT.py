@@ -84,23 +84,28 @@ def bai_piao_chatGPT():
         "tokensLength": token_length
     }
 
-    # 发起请求
-    session = requests.Session()
+    try:
+        # 发起请求
+        session = requests.Session()
 
-    response = session.post(
-        url,
-        headers=headers,
-        json=json
-    )
+        response = session.post(
+            url,
+            headers=headers,
+            json=json
+        )
 
-    """
-    请求成功，则把最新的message推入数组
-    """
-    res_message_obj = response.json()["choices"][0]["message"]
+        """
+        请求成功，则把最新的message推入数组
+        """
+        res_message_obj = response.json()["choices"][0]["message"]
 
-    messages.append(res_message_obj)
+        messages.append(res_message_obj)
 
-    return res_message_obj["content"]
+        return res_message_obj["content"]
+
+    # 出错则返回错误信息
+    except Exception as err:
+        return err
 
 
 """
