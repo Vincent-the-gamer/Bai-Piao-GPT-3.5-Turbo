@@ -27,7 +27,10 @@ def cal_token_length(content: str):
             count += 1
     return count
 
-messages = []
+messages = [
+  {"role": "system", "content": "请以markdown的形式返回答案"}
+]
+
 '''
 遍历所有消息的content，计算tokenLength总值
 '''
@@ -58,23 +61,25 @@ def bai_piao_chatGPT():
     # 计算消息数组总tokenLength
     token_length = cal_total_tokenLength(messages)
 
-    url = "http://api.aioschat.com/"
+    url = "https://api.forchange.cn/"
     headers = {
-        "Cache-Control": "no-cache",
-        "Content-Type": "application/json",
-        "Referer": "https://www.aigcfun.com/",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-        "sec-ch-ua": 'Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
-        "sec-ch-ua-platform": "Windows",
-        "sec-ch-ua-mobile": "?0",
-        "Connection": "keep-alive",
         "Accept": "application/json, text/plain, */*",
         "Accept-Encoding": "gzip, deflate, br",
         "Accept-Language": "zh-CN,zh;q=0.9",
+        "Access-Control-Allow-Origin": "*",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Host": "api.forchange.cn",
         "Origin": "https://www.aigcfun.com",
+        "Referer": "https://www.aigcfun.com/",
+        "sec-ch-ua": '"Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "Windows",
         "Sec-Fetch-Dest": "empty",
         "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "cross-site"
+        "Sec-Fetch-Site": "cross-site",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+        "x-f-platform": "browser"
     }
 
 
@@ -84,16 +89,15 @@ def bai_piao_chatGPT():
         "tokensLength": token_length
     }
 
+
+    # 发起请求
+    response = requests.post(
+        url,
+        headers=headers,
+        json=json
+    )
+
     try:
-        # 发起请求
-        session = requests.Session()
-
-        response = session.post(
-            url,
-            headers=headers,
-            json=json
-        )
-
         """
         请求成功，则把最新的message推入数组
         """
@@ -105,7 +109,15 @@ def bai_piao_chatGPT():
 
     # 出错则返回错误信息
     except Exception as err:
+        # 清空上下文
+        messages = [
+            {"role": "system", "content": "请以markdown的形式返回答案"}
+        ]
         return err
+
+
+
+
 
 
 """
@@ -114,7 +126,9 @@ def bai_piao_chatGPT():
 @app.route("/clearContext", methods=["GET"])
 def clear_context():
     global messages
-    messages = []
+    messages = [
+        {"role": "system", "content": "请以markdown的形式返回答案"}
+    ]
     return "已成功清空上下文，目前上下文条数: {}".format( len(messages) )
 
 """
