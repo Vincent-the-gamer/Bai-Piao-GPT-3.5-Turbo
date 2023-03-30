@@ -11,8 +11,13 @@ import unicodedata
 # 使用轻量级框架flask实现后端服务
 from flask import Flask
 from flask import request as req
+# 用于解决前端跨域问题
+from flask_cors import CORS
 
 app = Flask(__name__)
+# 解决前端跨域问题
+CORS(app, resources=r'/*')
+
 
 '''
 计算总tokenLength, 用于构造请求体
@@ -116,10 +121,6 @@ def bai_piao_chatGPT():
         return err
 
 
-
-
-
-
 """
 清空上下文
 """
@@ -143,5 +144,6 @@ def show_context_count():
 if __name__== "__main__":
     app.run(
         host="0.0.0.0",
-        port=2333
+        port=2333,
+        debug=False
     )
