@@ -118,7 +118,7 @@ def bai_piao_chatGPT():
         messages = [
             {"role": "system", "content": "请以markdown的形式返回答案"}
         ]
-        return err
+        return str(err)
 
 
 """
