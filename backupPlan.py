@@ -15,13 +15,10 @@ CORS(app, resources=r'/*')
 
 messages = []
 
-'''
+"""
 编写请求函数
-'''
-@app.route("/", methods=["POST"])
-def bai_piao_chatGPT():
-    content = req.json.get("content")
-
+"""
+def send_message(content: str):
     global messages
     messages.append(
         {"role": "user", "content": content}
@@ -43,7 +40,6 @@ def bai_piao_chatGPT():
         "messages": messages
     }
 
-
     # 发起请求
     response = requests.post(
         url,
@@ -56,9 +52,7 @@ def bai_piao_chatGPT():
         请求成功，则把最新的message推入数组
         """
         res_message_obj = response.json()["choices"][0]["message"]
-
         messages.append(res_message_obj)
-
         return res_message_obj["content"]
 
     # 出错则返回错误信息
@@ -66,6 +60,32 @@ def bai_piao_chatGPT():
         # 清空上下文
         messages = []
         return str(err)
+
+'''
+聊天请求接口
+'''
+@app.route("/", methods=["POST"])
+def bai_piao_chatGPT():
+    content = req.json.get("content")
+    return send_message(content)
+
+"""
+重新生成答案
+"""
+@app.route("/regenerate", methods=["GET"])
+def regenerate():
+    global messages
+    if len(messages) < 1:
+        return "消息为空"
+    else:
+        # 提取最后一次的用户问题
+        last_content = messages[len(messages) - 2]["content"]
+        messages = messages[0:-2] # 删除最后两条问答
+
+        # 重新发请求
+        return send_message(last_content)
+
+
 
 
 """
@@ -84,6 +104,8 @@ def clear_context():
 def show_context_count():
     global messages
     return "当前上下文条数：" + str(len(messages))
+
+
 
 
 if __name__== "__main__":
