@@ -38,7 +38,7 @@ git clone https://github.com/Vincent-the-gamer/Bai-Piao-GPT-3.5-Turbo.git
 ~~~shell
 pip install -r requirements.txt
 或
-手动安装flask, requests库
+手动安装Flask, requests, Flask-Cors库
 ~~~
 
 3. 运行代码，默认在本地的2333端口开启服务。
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 ## 主要功能
 我们的根地址是： `http://服务所在ip地址:2333` 
 
-**2023.4.1 根地址默认为：`http://服务所在ip地址:2333`**
+**2023.4.1 根地址默认为：`http://服务所在ip地址:2334`**
 
 我编写的接口如下： 
 
@@ -62,15 +62,20 @@ pip install -r requirements.txt
 ## 如何调用
 默认采用2333端口，使用post方式，使用json传参
 
-举例：\
-本地运行时：\
-对`http://localhost:2333`发起请求的请求体如下
+**2023.4.1开始 默认采用2334端口**
+
+举例：
+
+本地运行时：
+
+对`http://localhost:你的端口号`发起请求的请求体如下
 ~~~json
 {
   "content": "前端就是在前面端菜的意思吗?"
 }
 ~~~
-使用post方式来发送请求，一般来说，不需要刻意设置请求头，如果你担心，那么： \
+使用post方式来发送请求，一般来说，不需要刻意设置请求头，如果你担心，那么： 
+
 把Content-Type设置成application/json就好。
 
-除此之外的两个接口都是get请求，并且不需要携带任何参数，所以就不再多做说明。
+除此之外的接口都是get请求，并且不需要携带任何参数，所以就不再多做说明。
