@@ -9,6 +9,9 @@
 
 这个方案不支持上下文对话，有点可惜。
 
+**请选择前端页面下拉框的`legacy`来对话。(目前已默认选中）**
+![legacy模式](./.github/img/legacyMode.png)
+
 ## 已增加前端页面
 前端代码仓库：[Bai-Piao-GPT-WebUI](https://github.com/Vincent-the-gamer/Bai-Piao-GPT-WebUI)
 
