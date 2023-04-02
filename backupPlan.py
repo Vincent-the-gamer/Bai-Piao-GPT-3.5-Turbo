@@ -40,14 +40,15 @@ def send_message(content: str):
         "messages": messages
     }
 
-    # 发起请求
-    response = requests.post(
-        url,
-        headers=headers,
-        json=json
-    )
 
     try:
+        # 发起请求
+        response = requests.post(
+            url,
+            headers=headers,
+            json=json
+        )
+
         """
         请求成功，则把最新的message推入数组
         """
@@ -85,9 +86,6 @@ def regenerate():
         # 重新发请求
         return send_message(last_content)
 
-
-
-
 """
 清空上下文
 """
@@ -104,8 +102,6 @@ def clear_context():
 def show_context_count():
     global messages
     return "当前上下文条数：" + str(len(messages))
-
-
 
 
 if __name__== "__main__":

@@ -79,7 +79,7 @@ def bai_piao_chatGPT():
         "Referer": "https://www.aigcfun.com/",
         "sec-ch-ua": '"Not_A Brand";v="99", "Google Chrome";v="109", "Chromium";v="109"',
         "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": "Windows",
+        "sec-ch-ua-platform": '"Windows"',
         "Sec-Fetch-Dest": "empty",
         "Sec-Fetch-Mode": "cors",
         "Sec-Fetch-Site": "cross-site",
