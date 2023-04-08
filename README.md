@@ -4,13 +4,10 @@
 该模块必须做成后端服务，否则上下文的持久化需要用到数据库等其它持久化工具辅助。 \
 而当你使用了后端服务，只要服务不停止，上下文就可以保留。
 
-## 备用方案启动
-老接口寄掉了，现在请使用`backupPlan2.py`, 默认端口: 2334
-
-这个方案不支持上下文对话，有点可惜。
-
-**请选择前端页面下拉框的`legacy`来对话。(目前已默认选中）**
-![legacy模式](./.github/img/legacyMode.png)
+## 通过JS逆向，我找到了新方案
+请使用`baiPiaoChatGPT.py`，端口: 2333
+这是GPT-3.5-Turbo接口
+**注意：该接口不稳定，如果生成不出来东西，那么就重新问试试，还不行就过一段时间再来**
 
 ## 已增加前端页面
 前端代码仓库：[Bai-Piao-GPT-WebUI](https://github.com/Vincent-the-gamer/Bai-Piao-GPT-WebUI)
@@ -21,9 +18,6 @@
 
 ![前端](./.github/img/frontend.png)
 ![前端2](./.github/img/frontend2.png)
-
-## 开发日志
-[查看开发日志](./devLog.md)
 
 ## 效果预览
 这是我配合我的QQ机器人进行调用的效果
