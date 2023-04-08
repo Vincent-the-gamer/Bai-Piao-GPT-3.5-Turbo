@@ -6,8 +6,10 @@
 
 ## 通过JS逆向，我找到了新方案
 请使用`baiPiaoChatGPT.py`，端口: 2333
+
 这是GPT-3.5-Turbo接口
-**注意：该接口不稳定，如果生成不出来东西，那么就重新问试试，还不行就过一段时间再来**
+
+**<font color="red">注意：该接口不稳定，如果生成不出来东西，那么就重新问试试，还不行就过一段时间再来</font>**
 
 ## 已增加前端页面
 前端代码仓库：[Bai-Piao-GPT-WebUI](https://github.com/Vincent-the-gamer/Bai-Piao-GPT-WebUI)
