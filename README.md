@@ -26,8 +26,12 @@ Galaxy Fold的尺寸缩不进去（滑稽）。
 
 ### 前端预览
 
+#### PC端
 ![前端](./.github/img/new-frontend.png)
 ![前端2](./.github/img/new-frontend2.png)
+
+#### 移动端
+![移动端](./.github/img/mobile.png)
 
 ## 直接调用接口效果
 这是我配合我的QQ机器人进行调用的效果
