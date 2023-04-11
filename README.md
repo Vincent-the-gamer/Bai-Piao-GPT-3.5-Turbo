@@ -11,17 +11,25 @@
 
 **<font color="red">注意：该接口不稳定，如果生成不出来东西，那么就重新问试试，还不行就过一段时间再来</font>**
 
-## 已增加前端页面
+## 前端页面
 前端代码仓库：[Bai-Piao-GPT-WebUI](https://github.com/Vincent-the-gamer/Bai-Piao-GPT-WebUI)
 
-前端已支持markdown代码渲染，后续功能慢慢完善
+前端已支持markdown代码渲染，已**硬核适配移动端**
 
-请大家自行拉取前后端去部署了，我不想公开服务器的使用了，以免被恶意刷流量。
+懒得写media动态样式，直接硬缩就完事了，大部分手机应该都可以。
 
-![前端](./.github/img/frontend.png)
-![前端2](./.github/img/frontend2.png)
+Galaxy Fold的尺寸缩不进去（滑稽）。
 
-## 效果预览
+想自己玩的请大家自行拉取前后端去部署了。
+
+**我提供了可直接使用的网站，请不要恶意刷流量，谢谢。**
+
+### 前端预览
+
+![前端](./.github/img/new-frontend.png)
+![前端2](./.github/img/new-frontend2.png)
+
+## 直接调用接口效果
 这是我配合我的QQ机器人进行调用的效果
 
 ![1.png](./.github/img/1.png)
