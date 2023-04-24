@@ -42,7 +42,7 @@ messages = [
 """
 全局API_Key
 """
-api_key = "FCLAKLGPB3HNCZPML4"
+api_key = "FCDECIR0HM1R0B5FO4"
 
 
 """
@@ -95,6 +95,7 @@ def send_message(content: str):
 
     global api_key
     url = "https://api.aigcfun.com/api/v1/text?key={}".format(api_key)
+    print("当前API Key: " + api_key)
 
     global headers
 
@@ -119,7 +120,7 @@ def send_message(content: str):
         response_json = response.json()
 
         # 当前的API Key已经到达上限时，重新请求
-        if response_json["choices"][0]["message"] is None:
+        if not "message" in response_json["choices"][0]:
             messages = [
                 {"role": "system", "content": "请以markdown的形式返回答案"}
             ]
@@ -150,7 +151,7 @@ def request_api_key():
     global headers
 
     # 发起请求
-    response = requests.post(
+    response = requests.get(
         url,
         headers=headers
     )
@@ -160,8 +161,22 @@ def request_api_key():
     """
     global api_key
     api_key = response.json()["data"]
+    print("新API Key:" + api_key)
+    # 验证api_key
+    verify_key(api_key)
 
+"""
+验证key
+"""
+def verify_key(api_key: str):
+    url = "https://api.aigcfun.com/fc/verify-key?key={}".format(api_key)
+    global headers
 
+    # 发起请求
+    requests.get(
+        url,
+        headers=headers
+    )
 
 
 """
@@ -218,5 +233,3 @@ if __name__== "__main__":
         port=2333,
         debug=False
     )
-
-
