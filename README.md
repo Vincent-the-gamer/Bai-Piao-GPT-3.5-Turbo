@@ -4,6 +4,10 @@
 该模块必须做成后端服务，否则上下文的持久化需要用到数据库等其它持久化工具辅助。 \
 而当你使用了后端服务，只要服务不停止，上下文就可以保留。
 
+## 弃用
+新后端已用Rust重构，可以打包成可执行文件，不需要自己跑代码
+链接：[https://github.com/Vincent-the-gamer/Rust-BaipiaoGPT](https://github.com/Vincent-the-gamer/Rust-BaipiaoGPT)
+
 ## 目前状态
 请使用`baiPiaoChatGPT.py`，端口: 2333
 
